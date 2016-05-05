@@ -1,7 +1,8 @@
 (ns file-system-programming.core
+(use clojure.java.io)
   (:gen-class))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defn read-file [path]
+  (with-open [rdr (reader path)]
+    (doseq [line (line-seq rdr)]
+      (println line))))
